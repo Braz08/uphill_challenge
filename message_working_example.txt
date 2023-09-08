@@ -1,0 +1,145 @@
+{
+    "resourceType": "Bundle",
+    "id": "10bb101f-a121-4264-a920-67be9cb82c74",
+    "identifier": {
+        "system": "urn:example-org:sender.identifiers",
+        "value": "efdd254b-0e09-4164-883e-35cf3871715f"
+    },
+    "type": "message",
+    "timestamp": "2015-07-14T11:15:33+10:00",
+    "entry": [
+        {
+            "fullUrl": "messageeHeader1",
+            "resource": {
+                "resourceType": "MessageHeader",
+                "id": "tentativa32",
+                "text": {
+                    "status": "generated",
+                    "div": "<div xmlns=\"http://www.w3.org/1999/xhtml\">\n\t\t\t\t\t\t<p>This message is a request to link Patient records 654321 (Patient Donald DUCK @ Acme Healthcare, Inc) and 123456 (Patient Donald D DUCK @ Acme Healthcare, Inc)</p>\n\t\t\t\t\t</div>"
+                },
+                "eventCoding": {
+                    "system": "http://example.org/fhir/message-events",
+                    "code": "patient-link"
+                },
+                "source": {
+                    "endpoint": "http://localhost:8080"
+                },
+                "focus": [
+                    {
+                        "reference": "http://acme.com/ehr/fhir/Encounter/pat1"
+                    },
+                    {
+                        "reference": "http://acme.com/ehr/fhir/Patient/pat12"
+                    }
+                ]
+            }
+        },
+        {
+            "fullUrl": "http://acme.com/ehr/fhir/Encounter/pat1",
+            "resource": {
+                    "resourceType": "Encounter",
+                    "id": "example",
+                    "identifier": [
+                    {
+                        "use": "usual",
+                        "type": {
+                            "coding": [
+                                {
+                                    "system": "urn:uh-encounter-id",
+                                    "code": "MR"
+                                }
+                            ]
+                        },
+                        "system": "urn:uh-encounter-id",
+                        "value": "123456"
+                    }
+                ],
+                    "serviceType":[
+                        {
+                        "coding": [
+                            {
+                            "system": "http://hl7.org/fhir/ValueSet/service-type",
+                            "code": "11429006",
+                            "display": "Consultation"
+                            }
+                        ]
+                        }
+                    ],
+                    "text": {
+                        "status": "generated",
+                        "div": "<div xmlns=\"http://www.w3.org/1999/xhtml\">Encounter with patient @example</div>"
+                    },
+                    "status": "in-progress",
+                    "class": {
+                        "system": "http://terminology.hl7.org/CodeSystem/v3-ActCode",
+                        "code": "IMP",
+                        "display": "inpatient encounter"
+                    },
+                    "subject": {
+                        "reference": "Patient/example"
+                    }
+                    }
+        },
+        {
+            "fullUrl": "http://acme.com/ehr/fhir/Patient/pat12",
+            "resource": {
+                "resourceType": "Patient",
+                "id": "pat3",
+                "text": {
+                    "status": "generated",
+                    "div": "<div xmlns=\"http://www.w3.org/1999/xhtml\">\n\t\t\t\t\t\t<p>Patient Donald D DUCK @ Acme Healthcare, Inc. MR = 123456</p>\n\t\t\t\t\t</div>"
+                },
+                "identifier": [
+                    {
+                        "use": "usual",
+                        "type": {
+                            "coding": [
+                                {
+                                    "system": "urn:uh-patient-id",
+                                    "code": "MR"
+                                }
+                            ]
+                        },
+                        "system": "urn:uh-patient-id",
+                        "value": "123456"
+                    }
+                ],
+                "active": true,
+                "name": [
+                    {
+                        "use": "official",
+                        "family": "Donald",
+                        "given": [
+                            "Duck",
+                            "D"
+                        ]
+                    }
+                ],
+                "gender": "female",
+                "birthDate": "1974-12-25",
+                "contact": [
+                    {
+                        "relationship": [
+                            {
+                                "coding": [
+                                    {
+                                        "system": "http://example.org/fhir/CodeSystem/patient-contact-relationship",
+                                        "code": "E"
+                                    }
+                                ]
+                            }
+                        ],
+                        "organization": {
+                            "reference": "Organization/1",
+                            "display": "Walt Disney Corporation"
+                        }
+                    }
+                ],
+                "managingOrganization": {
+                    "reference": "Organization/1",
+                    "display": "ACME Healthcare, Inc"
+                }
+            }
+        }
+    ]
+}

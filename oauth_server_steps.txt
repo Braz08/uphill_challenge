@@ -1,0 +1,36 @@
+-----> IN THE BROWSER:
+
+1) http://localhost:9000/oauth2/authorize?
+client_id=client
+&redirect_uri=https://springone.io/authorized
+&scope=openid
+&response_type=code
+&code_challenge=DN6plnSCO0W1Vsf5XWMoDnaUQVW9i3YzSZ53557zJLw
+&code_challenge_method=S256
+
+2) enter access information
+user = user
+password = password
+
+3) extract authorization code
+
+-----> IN POSTMAN:
+
+4)  POST    http://localhost:9000/oauth2/token?
+redirect_uri=https://springone.io/authorized
+&grant_type=authorization_code
+&client_id=client
+&code=<INSERT OBTAINED GRANT HERE>
+&code_verifier=teste_uphill
+
++
+(Authorization tab)
+Type = Basic Auth
+client = client
+secret = secret
+
+4) copy "acess_token"
+
+5) perform request to the fhir server with this header included: Authorization = access token
+
+
